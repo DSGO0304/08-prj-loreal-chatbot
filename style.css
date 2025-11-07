@@ -1,143 +1,180 @@
-/* —— basic reset —— */
+/* === Luxury L’Oréal Chatbot Theme === */
+
+/* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* —— body + fonts —— */
+/* Page background — rich black with golden glow */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  background-color: #000;
+  background-image: radial-gradient(
+    circle at top right,
+    rgba(227, 165, 53, 0.15),
+    transparent 70%
+  );
+  font-family: "Montserrat", "Didot", serif;
+  color: #fff;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Chat container — sleek gold frame */
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  background: #0c0c0c;
+  border: 1px solid rgba(227, 165, 53, 0.6);
+  border-radius: 18px;
+  box-shadow: 0 0 40px rgba(227, 165, 53, 0.1);
+  overflow: hidden;
 }
 
-/* header */
+/* Header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  background: linear-gradient(180deg, #000 70%, #111 100%);
+  padding: 40px 20px 20px;
+}
+
+.site-header .logo {
+  width: 150px;
+  /* convert a black/near-black raster logo to a bright white appearance */
+  filter: invert(1) brightness(200%) contrast(110%);
+  /* keep layout spacing unchanged */
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #e3a535; /* gold */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 12px;
 }
 
-/* chat window */
+/* Chat area */
 .chatbox {
-  margin: 40px 0;
+  padding: 30px 25px;
+  background: #0b0b0b;
 }
 
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
+  height: 400px;
   overflow-y: auto;
-  background: #fafafa;
-  white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #e3a535 #0b0b0b;
 }
 
-/* messages */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background-color: #e3a535;
+  border-radius: 10px;
+}
+
+/* Message bubbles */
 .msg {
-  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 16px;
   line-height: 1.5;
+  max-width: 80%;
+  animation: fadeIn 0.4s ease;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* User bubble — gold gradient */
 .msg.user {
+  background: linear-gradient(135deg, #e3a535, #b8860b);
   color: #000;
+  align-self: flex-end;
+  box-shadow: 0 2px 8px rgba(227, 165, 53, 0.3);
 }
 
-.msg.ai {
-  color: #666666;
+/* Bot bubble — white pearl tone */
+.msg.bot {
+  background: #fff;
+  color: #000;
+  align-self: flex-start;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
 }
 
-/* input row */
+/* Input row — dark bar with golden button */
 .chat-form {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 10px;
+  background: #000;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(227, 165, 53, 0.4);
 }
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
-}
-
-.chat-form input:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-.chat-form button {
-  font-size: 18px;
-  background: #000;
+  background: #111;
+  border: 1px solid rgba(227, 165, 53, 0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
   color: #fff;
+  font-size: 16px;
+}
+
+.chat-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Send button — elegant gold */
+.chat-form button {
+  background: linear-gradient(135deg, #e3a535, #b8860b);
   border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  color: #000;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(227, 165, 53, 0.4);
 }
-
-.chat-form button .material-icons {
-  font-size: 24px;
-}
-
 .chat-form button:hover {
-  background: #666666;
+  background: linear-gradient(135deg, #f5c85d, #e3a535);
+  transform: translateY(-1px);
 }
 
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* visually hidden */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* footer */
+/* Footer — minimal gold accent */
 .site-footer {
-  margin: 60px 0 40px;
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  padding: 15px;
+  font-size: 13px;
+  background: #000;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(227, 165, 53, 0.3);
 }
-
-.site-footer nav {
-  margin-top: 12px;
-}
-
 .site-footer a {
-  margin: 0 8px;
-  color: #000;
+  color: #e3a535;
   text-decoration: none;
 }
-
 .site-footer a:hover {
-  color: #666666;
+  text-decoration: underline;
 }

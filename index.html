@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chat Assistant</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -19,29 +19,33 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <!-- Use local L'Oréal logo from the project img folder -->
+        <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
         <h1 class="site-title">Smart Product Advisor</h1>
       </header>
 
       <!------- Chat Area ------->
       <main>
         <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
-          </div>
+          <!-- shows the user's last question -->
+          <div id="lastQuestion" class="last-question" aria-live="polite"></div>
 
+          <!-- chat messages -->
+          <div id="chatWindow" class="chat-window" aria-live="polite"></div>
+
+          <!-- input -->
           <form id="chatForm" class="chat-form">
             <label for="userInput" class="visually-hidden">Message</label>
             <input
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask me about L’Oréal products or routines…"
               autocomplete="off"
               required
             />
-            <button type="submit" id="sendBtn">
+            <button type="submit" id="sendBtn" aria-label="Send">
               <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
             </button>
           </form>
         </section>
